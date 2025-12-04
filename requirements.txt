@@ -8,5 +8,6 @@ python-multipart
 bcrypt
 passlib[bcrypt]
 alembic
-pydantic
+pydantic[email]
 python-dotenv
+email-validator
