@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -74,8 +74,10 @@ function CheckoutForm() {
 
 export default function PaymentPage() {
   return (
-    <Elements stripe={stripePromise}>
-      <CheckoutForm />
-    </Elements>
+    <Suspense fallback={<div className="text-center mt-16">Loading payment form...</div>}>
+      <Elements stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements>
+    </Suspense>
   );
 }
