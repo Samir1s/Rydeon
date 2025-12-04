@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState, Suspense } from "react";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { API_URL } from "@/lib/api";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -21,7 +22,7 @@ function CheckoutForm() {
     const token = localStorage.getItem("token");
 
     axios.post(
-      "http://localhost:8000/payments/create-intent",
+      `${API_URL}/payments/create-intent`,
       { ride_id: Number(rideId) },
       { headers: { Authorization: `Bearer ${token}` } }
     )
@@ -50,7 +51,7 @@ function CheckoutForm() {
     }
 
     if (result.paymentIntent?.status === "succeeded") {
-      await axios.post("http://localhost:8000/payments/confirm", {
+      await axios.post(`${API_URL}/payments/confirm`, {
         payment_id: result.paymentIntent.id,
       });
 
