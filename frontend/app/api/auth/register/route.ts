@@ -4,7 +4,8 @@ export async function POST(req: Request) {
   try {
     const { name, email, password } = await req.json();
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    // Use NEXT_PUBLIC_API_URL for client-side or API_URL for server-side
+    const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
     const backend = await fetch(`${apiUrl}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
