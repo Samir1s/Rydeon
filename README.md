@@ -272,8 +272,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@Samir1s](https://github.com/Samir1s)
 
 ## 🙏 Acknowledgments
 
