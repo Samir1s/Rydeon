@@ -34,6 +34,11 @@ function CheckoutForm() {
     if (!stripe || !elements) return;
 
     const card = elements.getElement(CardElement);
+    
+    if (!card) {
+      alert("Card element not found");
+      return;
+    }
 
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: { card },
