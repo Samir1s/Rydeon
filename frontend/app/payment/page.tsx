@@ -28,7 +28,7 @@ function CheckoutForm() {
     .then(res => setClientSecret(res.data.client_secret));
   }, []);
 
-  const handlePayment = async (e) => {
+  const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!stripe || !elements) return;
