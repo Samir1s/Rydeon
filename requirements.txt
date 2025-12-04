@@ -11,3 +11,4 @@ alembic
 pydantic[email]
 python-dotenv
 email-validator
+stripe
