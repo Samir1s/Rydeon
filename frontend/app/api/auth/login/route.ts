@@ -4,8 +4,11 @@ export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
-    // Use NEXT_PUBLIC_API_URL for client-side or API_URL for server-side
-    const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    // Get API URL from environment or use production default
+    const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "https://rydeon.onrender.com";
+    
+    console.log("API URL being used:", apiUrl); // Debug log
+    
     const backend = await fetch(`${apiUrl}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
