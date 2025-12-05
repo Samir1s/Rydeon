@@ -119,35 +119,35 @@ export default function BookRide() {
         <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid lg:grid-cols-2 gap-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8">
           
           {/* Left Side - Booking Form */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl p-6 lg:p-8 h-fit sticky top-24 border border-white/20 animate-slide-in-left">
-            <h1 className="text-3xl font-bold mb-6 text-white">Request a ride now</h1>
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 h-fit lg:sticky lg:top-24 border border-white/20 animate-slide-in-left order-1">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">Request a ride now</h1>
             
-            <div className="space-y-4 mb-6">
+            <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
               {/* Pickup Input */}
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 bg-purple-400 rounded-full group-focus-within:scale-125 transition-transform"></div>
+                <div className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-purple-400 rounded-full group-focus-within:scale-125 transition-transform"></div>
                 <input
                   type="text"
                   placeholder="Enter pickup location"
                   value={pickup}
                   onChange={(e) => setPickup(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:bg-white/10 focus:border-purple-400/50 transition-all duration-300 text-white placeholder-gray-400"
+                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:bg-white/10 focus:border-purple-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
                 />
               </div>
 
               {/* Dropoff Input */}
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 w-3 h-3 bg-blue-400 rounded-full group-focus-within:scale-125 transition-transform"></div>
+                <div className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-400 rounded-full group-focus-within:scale-125 transition-transform"></div>
                 <input
                   type="text"
                   placeholder="Enter destination"
                   value={dropoff}
                   onChange={(e) => setDropoff(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:bg-white/10 focus:border-blue-400/50 transition-all duration-300 text-white placeholder-gray-400"
+                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/5 border border-white/10 rounded-xl outline-none focus:bg-white/10 focus:border-blue-400/50 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
                 />
               </div>
 
@@ -155,63 +155,63 @@ export default function BookRide() {
               <button
                 onClick={handleSearchRides}
                 disabled={!pickup || !dropoff}
-                className="w-full py-4 bg-white text-black rounded-xl font-medium hover:bg-gray-100 transition-all duration-300 disabled:bg-white/20 disabled:text-gray-500 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full py-3 sm:py-4 bg-white text-black rounded-xl font-medium hover:bg-gray-100 transition-all duration-300 disabled:bg-white/20 disabled:text-gray-500 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base"
               >
                 See prices
               </button>
             </div>
 
             {/* Additional Options */}
-            <div className="border-t border-white/10 pt-6 space-y-3">
-              <button className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group">
-                <div className="flex items-center space-x-3">
-                  <span className="text-2xl">🕐</span>
-                  <span className="font-medium text-white">Schedule for later</span>
+            <div className="border-t border-white/10 pt-4 sm:pt-6 space-y-2 sm:space-y-3">
+              <button className="w-full flex items-center justify-between p-3 sm:p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <span className="text-xl sm:text-2xl">🕐</span>
+                  <span className="font-medium text-white text-sm sm:text-base">Schedule for later</span>
                 </div>
-                <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
+                <span className="text-gray-400 group-hover:translate-x-1 transition-transform text-sm sm:text-base">→</span>
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group">
-                <div className="flex items-center space-x-3">
-                  <span className="text-2xl">💼</span>
-                  <span className="font-medium text-white">Add promo code</span>
+              <button className="w-full flex items-center justify-between p-3 sm:p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <span className="text-xl sm:text-2xl">💼</span>
+                  <span className="font-medium text-white text-sm sm:text-base">Add promo code</span>
                 </div>
-                <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
+                <span className="text-gray-400 group-hover:translate-x-1 transition-transform text-sm sm:text-base">→</span>
               </button>
             </div>
           </div>
 
           {/* Right Side - Map or Ride Options */}
-          <div className="animate-slide-in-right">
+          <div className="animate-slide-in-right order-2 min-h-[400px] lg:min-h-[600px]">
             {showRides ? (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6 text-white">Choose a ride</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-white">Choose a ride</h2>
                 
                 {rideOptions.map((ride, index) => (
                   <div
                     key={ride.id}
                     onClick={() => setSelectedRide(ride.id)}
-                    className={`bg-white/5 backdrop-blur-sm rounded-xl p-6 cursor-pointer transition-all duration-300 border animate-slide-up ${
+                    className={`bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-300 border animate-slide-up ${
                       selectedRide === ride.id
                         ? "border-purple-500 shadow-lg shadow-purple-500/20 bg-white/10"
                         : "border-white/10 hover:border-white/20 hover:bg-white/10"
                     }`}
                     style={{animationDelay: `${index * 0.1}s`}}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-4xl">{ride.icon}</div>
-                        <div>
-                          <div className="flex items-center space-x-2">
-                            <h3 className="font-bold text-lg text-white">{ride.name}</h3>
-                            <span className="text-sm text-gray-400">{ride.time}</span>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                        <div className="text-3xl sm:text-4xl flex-shrink-0">{ride.icon}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center space-x-2 flex-wrap">
+                            <h3 className="font-bold text-base sm:text-lg text-white">{ride.name}</h3>
+                            <span className="text-xs sm:text-sm text-gray-400">{ride.time}</span>
                           </div>
-                          <p className="text-sm text-gray-400">{ride.description}</p>
+                          <p className="text-xs sm:text-sm text-gray-400 truncate">{ride.description}</p>
                           <p className="text-xs text-gray-500 mt-1">👤 {ride.capacity} seats</p>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <p className="text-xl font-bold text-white">{ride.price}</p>
+                      <div className="text-right flex-shrink-0">
+                        <p className="text-lg sm:text-xl font-bold text-white">{ride.price}</p>
                       </div>
                     </div>
                   </div>
@@ -221,19 +221,19 @@ export default function BookRide() {
                 {selectedRide && (
                   <button
                     onClick={handleBookRide}
-                    className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] mt-6 animate-scale-in"
+                    className="w-full py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] mt-4 sm:mt-6 animate-scale-in text-sm sm:text-base"
                   >
                     Confirm {rideOptions.find(r => r.id === selectedRide)?.name}
                   </button>
                 )}
               </div>
             ) : (
-              <div className="space-y-4">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-white">Select locations on map</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">Select locations on map</h2>
                 </div>
                 <SimpleMap setPickup={setPickupCoords} setDrop={setDropCoords} />
-                <div className="mt-4 space-y-2 bg-white/5 backdrop-blur-xl rounded-xl p-4 border border-white/10">
+                <div className="mt-3 sm:mt-4 space-y-2 bg-white/5 backdrop-blur-xl rounded-xl p-3 sm:p-4 border border-white/10">
                   {pickupCoords && (
                     <div className="text-sm text-green-400 flex items-center space-x-2">
                       <span>✓</span>
@@ -258,21 +258,21 @@ export default function BookRide() {
         </div>
 
         {/* Info Section */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <div className="bg-white/5 backdrop-blur-xl rounded-xl p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300 animate-fade-in">
-            <div className="text-3xl mb-3">⚡</div>
-            <h3 className="font-bold mb-2 text-white">Quick pickup</h3>
-            <p className="text-sm text-gray-400">Drivers arrive in minutes</p>
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 sm:p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300 animate-fade-in">
+            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">⚡</div>
+            <h3 className="font-bold mb-1 sm:mb-2 text-white text-sm sm:text-base">Quick pickup</h3>
+            <p className="text-xs sm:text-sm text-gray-400">Drivers arrive in minutes</p>
           </div>
-          <div className="bg-white/5 backdrop-blur-xl rounded-xl p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300 animate-fade-in" style={{animationDelay: '0.1s'}}>
-            <div className="text-3xl mb-3">💳</div>
-            <h3 className="font-bold mb-2 text-white">Easy payment</h3>
-            <p className="text-sm text-gray-400">Cash or cashless, your choice</p>
+          <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 sm:p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300 animate-fade-in" style={{animationDelay: '0.1s'}}>
+            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">💳</div>
+            <h3 className="font-bold mb-1 sm:mb-2 text-white text-sm sm:text-base">Easy payment</h3>
+            <p className="text-xs sm:text-sm text-gray-400">Cash or cashless, your choice</p>
           </div>
-          <div className="bg-white/5 backdrop-blur-xl rounded-xl p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300 animate-fade-in" style={{animationDelay: '0.2s'}}>
-            <div className="text-3xl mb-3">🛡️</div>
-            <h3 className="font-bold mb-2 text-white">Safe rides</h3>
-            <p className="text-sm text-gray-400">Verified drivers and 24/7 support</p>
+          <div className="bg-white/5 backdrop-blur-xl rounded-xl p-4 sm:p-6 text-center border border-white/10 hover:bg-white/10 transition-all duration-300 animate-fade-in" style={{animationDelay: '0.2s'}}>
+            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🛡️</div>
+            <h3 className="font-bold mb-1 sm:mb-2 text-white text-sm sm:text-base">Safe rides</h3>
+            <p className="text-xs sm:text-sm text-gray-400">Verified drivers and 24/7 support</p>
           </div>
         </div>
       </div>
