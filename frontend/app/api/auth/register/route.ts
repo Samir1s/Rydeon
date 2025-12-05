@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
-import { API_URL } from "@/config/api";
+
+const BACKEND_URL = "https://rydeon.onrender.com";
 
 export async function POST(req: Request) {
   try {
     const { name, email, password } = await req.json();
     
-    console.log("API URL being used:", API_URL); // Debug log
+    console.log("Using backend URL:", BACKEND_URL);
     
-    const backend = await fetch(`${API_URL}/auth/register`, {
+    const backend = await fetch(`${BACKEND_URL}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
     // Check if backend is not responding
     if (error instanceof TypeError && error.message.includes('fetch')) {
       return NextResponse.json(
-        { error: "Backend server not responding. Please check if the backend is running on port 8000." },
+        { error: `Backend server not responding at ${BACKEND_URL}. Error: ${error.message}` },
         { status: 503 }
       );
     }
