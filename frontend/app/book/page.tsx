@@ -25,7 +25,7 @@ export default function BookRide() {
   const [dropCoords, setDropCoords] = useState<{lat: number, lng: number} | null>(null);
   const [selectedRide, setSelectedRide] = useState<string | null>(null);
   const [showRides, setShowRides] = useState(false);
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(true);
 
   const rideOptions = [
     {
@@ -70,10 +70,6 @@ export default function BookRide() {
     if (pickup && dropoff) {
       setShowRides(true);
     }
-  };
-
-  const handleUseMap = () => {
-    setShowMap(true);
   };
 
   useEffect(() => {
@@ -167,28 +163,6 @@ export default function BookRide() {
 
             {/* Additional Options */}
             <div className="border-t border-white/10 pt-6 space-y-3">
-              <Link 
-                href="/map"
-                className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group"
-              >
-                <div className="flex items-center space-x-3">
-                  <span className="text-2xl">📍</span>
-                  <span className="font-medium text-white">Select on map</span>
-                </div>
-                <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
-              </Link>
-
-              <button 
-                onClick={handleUseMap}
-                className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group"
-              >
-                <div className="flex items-center space-x-3">
-                  <span className="text-2xl">🗺️</span>
-                  <span className="font-medium text-white">Show map here</span>
-                </div>
-                <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-
               <button className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-xl transition-all duration-300 group">
                 <div className="flex items-center space-x-3">
                   <span className="text-2xl">🕐</span>
@@ -209,39 +183,7 @@ export default function BookRide() {
 
           {/* Right Side - Map or Ride Options */}
           <div className="animate-slide-in-right">
-            {showMap && !showRides ? (
-              <div className="space-y-4">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-white">Select locations on map</h2>
-                  <button
-                    onClick={() => setShowMap(false)}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 p-2 hover:bg-white/10 rounded-lg"
-                  >
-                    ✕
-                  </button>
-                </div>
-                <SimpleMap setPickup={setPickupCoords} setDrop={setDropCoords} />
-                <div className="mt-4 space-y-2">
-                  {pickupCoords && (
-                    <div className="text-sm text-green-400 flex items-center space-x-2">
-                      <span>✓</span>
-                      <span>Pickup: {pickupCoords.lat.toFixed(4)}, {pickupCoords.lng.toFixed(4)}</span>
-                    </div>
-                  )}
-                  {dropCoords && (
-                    <div className="text-sm text-green-400 flex items-center space-x-2">
-                      <span>✓</span>
-                      <span>Drop-off: {dropCoords.lat.toFixed(4)}, {dropCoords.lng.toFixed(4)}</span>
-                    </div>
-                  )}
-                  {!pickupCoords && !dropCoords && (
-                    <p className="text-sm text-gray-400 text-center">
-                      Click on the map to select pickup location, then click again for drop-off
-                    </p>
-                  )}
-                </div>
-              </div>
-            ) : showRides ? (
+            {showRides ? (
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold mb-6 text-white">Choose a ride</h2>
                 
@@ -286,12 +228,30 @@ export default function BookRide() {
                 )}
               </div>
             ) : (
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl shadow-lg p-8 text-center border border-white/10 animate-fade-in">
-                <div className="text-6xl mb-4">🗺️</div>
-                <h3 className="text-xl font-bold mb-2 text-white">Enter your route</h3>
-                <p className="text-gray-400">
-                  Add your pickup and destination to see available rides
-                </p>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-white">Select locations on map</h2>
+                </div>
+                <SimpleMap setPickup={setPickupCoords} setDrop={setDropCoords} />
+                <div className="mt-4 space-y-2 bg-white/5 backdrop-blur-xl rounded-xl p-4 border border-white/10">
+                  {pickupCoords && (
+                    <div className="text-sm text-green-400 flex items-center space-x-2">
+                      <span>✓</span>
+                      <span>Pickup: {pickupCoords.lat.toFixed(4)}, {pickupCoords.lng.toFixed(4)}</span>
+                    </div>
+                  )}
+                  {dropCoords && (
+                    <div className="text-sm text-green-400 flex items-center space-x-2">
+                      <span>✓</span>
+                      <span>Drop-off: {dropCoords.lat.toFixed(4)}, {dropCoords.lng.toFixed(4)}</span>
+                    </div>
+                  )}
+                  {!pickupCoords && !dropCoords && (
+                    <p className="text-sm text-gray-400 text-center">
+                      Click on the map to select pickup location, then click again for drop-off
+                    </p>
+                  )}
+                </div>
               </div>
             )}
           </div>
