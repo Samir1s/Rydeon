@@ -24,12 +24,14 @@ export default function Dashboard() {
       return;
     }
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://rydeon.onrender.com";
+    
     // Fetch user rides
     const fetchRides = async () => {
       try {
         // Get user ID from token (you might need to decode JWT)
         // For now, we'll fetch all rides for the logged-in user
-        const response = await fetch("http://localhost:8000/rides/", {
+        const response = await fetch(`${API_URL}/rides/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
