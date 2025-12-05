@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { getToken } from "../../utils/auth";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://rydeon.onrender.com";
+
 export default function RidesPage() {
   const [rides, setRides] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +12,7 @@ export default function RidesPage() {
   async function fetchRides() {
     try {
       const token = getToken();
-      const res = await fetch("http://localhost:8000/rides/", {
+      const res = await fetch(`${API_URL}/rides/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -26,7 +28,7 @@ export default function RidesPage() {
   async function cancelRide(id: number) {
     try {
       const token = getToken();
-      await fetch(`http://localhost:8000/rides/${id}/cancel`, {
+      await fetch(`${API_URL}/rides/${id}/cancel`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
       });

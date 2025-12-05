@@ -94,9 +94,11 @@ export default function BookRide() {
       return;
     }
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://rydeon.onrender.com";
+    
     try {
       const res = await axios.post(
-        "http://localhost:8000/rides/book",
+        `${API_URL}/rides/book`,
         {
           passenger_id: 1, // Replace with actual user ID from token
           pickup_location: pickup,
