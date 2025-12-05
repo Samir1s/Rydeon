@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
+import { API_URL } from "@/config/api";
 
 export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
-
-    // Get API URL from environment or use production default
-    const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "https://rydeon.onrender.com";
     
-    console.log("API URL being used:", apiUrl); // Debug log
+    console.log("API URL being used:", API_URL); // Debug log
     
-    const backend = await fetch(`${apiUrl}/auth/login`, {
+    const backend = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
