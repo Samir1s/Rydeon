@@ -5,6 +5,11 @@ import ClientLayout from "@/components/ClientLayout";
 export const metadata = {
   title: "Rydeon - Your Ride, Your Way",
   description: "Modern Cab Booking Platform - Request a ride, hop in, and go",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

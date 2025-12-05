@@ -87,14 +87,14 @@ export default function Dashboard() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8 animate-fade-in">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 animate-fade-in">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Welcome back!</h1>
-            <p className="text-gray-400">Manage your rides and account</p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Welcome back!</h1>
+            <p className="text-gray-400 text-sm sm:text-base">Manage your rides and account</p>
           </div>
           <button
             onClick={handleLogout}
-            className="px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-xl hover:bg-white/20 transition-all duration-300"
+            className="w-full sm:w-auto px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-xl hover:bg-white/20 transition-all duration-300"
           >
             Logout
           </button>
